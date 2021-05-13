@@ -1,0 +1,55 @@
+{% extends 'principal.html'  %}
+
+{% block titulo %} Formulario {%  endblock %}
+
+
+{% block scripts %}<script src="/static/js/scriptj.js"></script>{% endblock %}
+{% block encabezado  %} Inicia Sesion {% endblock  %}</h2>
+
+
+{% block cuerpo %}
+
+</br>
+
+
+{%  if ERRORES %}
+                <div class="col-xs-12" id="errores">
+                        <p class="regis" style="background-color:rgba(217,83,79,0.5); width: 200px;">{{ ERRORES }}</div>
+                </div>
+{%  endif %}
+
+<div class="col-sm-2"></div>
+<div class="col-sm-8 main-section">
+  <div class="container modal-content">
+
+  <form class="form-group" id="valid" method="POST">
+
+    {% csrf_token %}
+
+
+
+   <div id="userr" class="form-group">
+      <label> Usuario </label>
+      <input placeholder="Usuario" type="text" name="user" id="user" class="form-control"/>
+      <label class="glyphicon" style="color:red" id="errores1"></label>
+    </div>
+
+
+    <div id="contra" class='form-group'>
+      <label> Contraseña</label>
+      <input type="password" placeholder="contraseña" name="passwd" id="passwd" class="form-control"/>
+      <label class="glyphicon" style="color:red" id="errores2"></label>
+    </div>
+
+
+    <div class="center">
+
+      <button class=" text-center btn btn-primary" id="boton" name="btnAceptar" type="submit"><span class="glyphicon glyphicon-log-in"></span>Entrar</button>
+
+    </div>
+  </form>
+
+  </div>
+</div>
+<div class="col-sm-2"></div>
+{%  endblock %}

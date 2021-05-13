@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Solicitud firma</title>
+  </head>
+  <link rel="stylesheet" href="/static/css/funciones.css">
+  
+
+<div class="renovar_llaves_div" id="renovar_llaves_div">
+                <form method="POST">
+                {% csrf_token %}
+                <fieldset class="col-xs-6" style="background-color:rgba(34,53,72, 0.8); padding:15px;">
+                        <legend><h1>Renovar Llaves:</h1></legend>
+                        {% if errores %}
+                        <div class="alert alert-danger" id="errorA"> {{ errores }} </div>
+                        {% endif %} 
+                        <div class="form-group" style="padding:12px">
+                                <label class="regis">Ingrese su contraseña:</label>
+                                <input type="password" class="form-control" name="password" placeholder="contraseña">
+                        </div>
+                        <div style="padding:12px">
+                                <button type="submit" id="btnRenovar" class="btn btn-success">Renovar</button>
+                        </div>
+                </fieldset>
+                </form>
+</div>
+
+</html>

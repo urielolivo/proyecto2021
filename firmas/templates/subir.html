@@ -1,0 +1,97 @@
+{% extends 'principal.html'  %}
+
+{% block scripts %}
+<script src="/static/js/funciones.js"></script>
+<script src="/static/js/renovar.js"></script>
+{% endblock %}
+
+{% block titulo %} Funciones de archivos autenticos {%  endblock %}
+
+{% block estilos %}
+<link type="text/css" href="/static/css/funciones.css" rel="stylesheet" />
+{%  endblock %}
+
+{% block encabezado  %} Funciones de archivos autenticos {% endblock  %}
+
+{% block cuerpo %}	
+	
+	<div class="col-xs-3" id="div_renovar1" style="display:none;"></div>
+	<div class="renovar_llaves col-xs-4" id="renovar_llaves" style="display:none;"></div>
+	<div class="col-xs-3" id="div_renovar2" style="display:none;"></div>
+
+	<div class="col-xs-12" id="menu">
+		<a type="button" class="btn btn-danger" id="btnLogout" href="/logout">Salir</a>
+		<a type="button" class="btn btn-info" id="btnRenovar">Renovar llaves</a>
+	</div>	
+		
+	<div class="col-xs-12"><br></div>
+
+	{%  if ERRORES %}
+		<div class="col-xs-2" id="div_errores1"></div>
+		<div class="col-xs-8" id="errores">
+	    		<p class="regis" style="background-color:rgba(217,83,79,0.7);">{{ ERRORES }}</div>
+		</div>
+		<div class="col-xs-2" id="div_errores2"></div>
+	{%  endif %}
+
+	<div class="col-xs-12"></div>
+	
+	<div class="col-xs-2">  </div>
+
+	<div class="col-xs-4" id="div_firmar" style="height: 510px;">
+		<fieldset style="background-color:rgba(34,53,72,0.5); padding:15px;">
+		<legend class="subtitulo"><h1>-Firmar Documento-</h1></legend>
+		<form method="POST" class="form-group" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-group" style="display:none"><input type="text" class="form-control" name="firmar_" id="firmar_input"></div>
+			<div class="form-group" style="padding:12px">
+				<label for="title" class="regis">Seleccionar archivo:</label>
+				<input type="file" class="regis bloqin" name="file_firma" required> 
+			</div>
+			<div id="contra" class="form-group" style="padding:12px">
+				<label for="title" class="regis">Contraseña:</label>
+				<input type="password" placeholder="contraseña" name="passwd" id="passwd" class="form-control bloqin" required>
+				<label class="glyphicon" style="color:red" id="errores2"></label>
+			</div>
+			<div class="form-group" style="padding:17px"></div>
+			<div style="padding:12px">
+				<input type="submit" class="btn btn-success" id="firmar" name="firmar" value="Firmar archivo">
+			</div>
+		</form>
+		
+		</fieldset>
+	</div>
+	
+	<div class="col-xs-4" id="div_verificar" style="height: 510px;">
+		<fieldset style="background-color:rgba(34,53,72,0.5); padding:15px;">
+		<legend class="subtitulo"><h1>-Verificar Documento-</h1></legend>
+		<form method="POST" class="form-group" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-group" style="display:none"><input type="text" class="form-control" name="verificar_" id="verificar_input"></div>
+			<div class="form-group" style="padding:12px">
+				<label for="title" class="regis">Seleccionar archivo:</label>
+                                <input type="file" class="regis bloqin" name="file_archivo" required>
+			</div>
+			<div class="form-group" style="padding:12px">
+				<label for="title" class="regis">Firma de archivo:</label>
+				<input type="file" class="regis bloqin" name="file_firmado" required>
+								
+			</div>
+			<div class="form-group" style="padding:12px">
+                                <label for="title" class="regis">Selecciona usuario:</label>
+                                <select class="bloqin" name="usuarios">
+                                        {% for usuario in usuarios %}
+                                        <option value={{ usuario.nick }} name="usuario">{{ usuario.nick }}</option>
+                                        {% endfor %}
+                                </select> 
+                        </div>
+			<div class="form-group" style="padding:12px">
+				<input type="submit" class="btn btn-success" id="verificar" name="verificar" value="Verificar archivo">
+			</div>
+		</form>
+		</fieldset>
+	</div>
+
+	<div class="col-xs-2">  </div>
+
+{% endblock %}
