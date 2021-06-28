@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style >
+		h1{ color: blue; }
+	</style>
+</head>
+<body>
+	
+  
+{% extends 'social/layout.html' %}
+{% block content %}
+
+<!-- Profile -->
+<div class="profile">
+	<p>hola {{ mail }}</p>
+	<h2>{{ user.username}}</h2>
+</div>
+<div>
+	<h5 style="text-align:center">Password</h5>
+        <p style="text-align:center">{{ user.passwords.count }} </p>
+</div>
+{% for password in passwords %}
+
+
+<article>
+    <div class="container-article">
+        <!-- <img src="{{ password.user.perfil.image.url }}"> -->
+        <div>
+            <h4 class="username">{{ password.user.username}}</h4>
+            <p class="username"> Usuario: {{ password.usuario }}</p>
+            <p class="username">Nota: {{password.nota}}</p>
+            
+               <p class="username" id="password-field" type="password" class="form-control" name="password" value="secret">Password: {{password.contrasena}} </p>
+                
+            <a href="{% url 'perfil' password.user.username %}"></a>
+            <i class="clock"></i>
+            
+            <div class="post">{{ password.url }}</div>
+        </div>
+    </div>
+   
+
+   
+   
+</article>
+
+{% endfor %}
+
+
+{{ block.super }}
+
+{% endblock %}
+
+
+</body>
+</html>

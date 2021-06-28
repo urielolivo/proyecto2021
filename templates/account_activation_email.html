@@ -1,0 +1,7 @@
+{% autoscape off %}
+Hi {{ user.username }},
+
+Pleae click
+
+http://{{ domain }}{%url 'activate' uidb64=uid token=token %}
+{% endautoscape %}

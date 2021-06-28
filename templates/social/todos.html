@@ -1,0 +1,20 @@
+{% extends 'social/layout.html' %}
+{% load humanize %}
+{% block content %}
+
+{% for password in passwords %}
+
+<article>
+    <div class="container-article">
+        <!-- <img src="{{ password.user.perfil.image.url }}"> -->
+        <div>
+            <h2 class="username"><a href="{% url 'profile' password.user.username %}">{{ password.user.username}}</a></h2>
+            <i class="clock"></i>
+            <time data-time="#">{{ password.timestamp | naturaltime}}</time>
+            <div class="post">{{ password.url }}</div>
+        </div>
+    </div>
+</article>
+{% endfor %}
+
+{% endblock %}

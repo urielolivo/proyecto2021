@@ -1,0 +1,17 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+
+<div class="container">
+  <form class="form" method="post">
+    <br/>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="text-center btn " type="submit"> <span class="glyphicon glyphicon-log-in"></span> Entrar  </button>
+ 
+    	
+</div>
+    
+{% endblock %}

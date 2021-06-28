@@ -1,0 +1,19 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+<h2>Compartir Password</h2>
+<p>Recuerda que para compartir un password, el usuario tiene que ser parte de nuestra comunidad</p>
+
+<form class="form" method="post" action="{% url 'compartir' password %}">
+{% csrf_token %}
+ 
+<div class="col">
+    {{ formulario.user.label }}
+    {{ formulario.user }}
+</div>
+    
+    <button type="submit" id="submit">Compartir</button>
+</div>
+</form>
+
+{% endblock %}

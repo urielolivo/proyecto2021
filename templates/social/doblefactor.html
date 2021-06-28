@@ -1,0 +1,52 @@
+{% extends 'social/layoutt.html'  %}
+
+{% block titulo %} Formulario {%  endblock %}
+
+
+<!--{% block scripts %}<script src="/static/js/scriptj.js"></script>{% endblock %} !-->
+{% block encabezado  %} Multifactor de llavero  de contraseñas {% endblock  %}</h2>
+
+{% block cuerpo %}
+
+</br>
+
+
+{%  if ERRORES %}
+                <div class="col-xs-12" id="errores">
+                        <p class="regis" style="background-color:rgba(217,83,79,0.5); width: 200px;">{{ ERRORES }}</div>
+                </div>
+{%  endif %}
+
+<div class="col-sm-2"></div>
+<div class="col-sm-8 main-section">
+  <div class="container modal-content">
+
+  <form class="form-group" id="valid" method="POST">
+
+    {% csrf_token %}
+
+
+
+   <div id="codigo" class="form-group">
+      <label> Por favor ingresa el codigo que se te envio </label>
+      <input placeholder="codigo" type="text" name="codigo" id="codigo" class="form-control"/>
+      <label class="glyphicon" style="color:red" id="errores1"></label>
+      <button class="text-center btn " id="tok" name="tok" type="submit"> <span class="glyphicon glyphicon-log-in"></span> Enviarme Token </button>
+   </div>
+
+
+
+
+    
+
+    <div class="center">
+
+      <button class=" text-center btn btn-primary" id="boton" name="btnAceptar" type="submit"><span class="glyphicon glyphicon-log-in"></span> Validar</button>
+
+    </div>
+  </form>
+
+  </div>
+</div>
+<div class="col-sm-2"></div>
+{%  endblock %}

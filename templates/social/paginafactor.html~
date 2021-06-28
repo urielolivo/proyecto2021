@@ -1,0 +1,61 @@
+{% extends 'social/layoutt.html'  %}
+
+{% block titulo %} Formulario {%  endblock %}
+
+
+<!--{% block scripts %}<script src="/static/js/scriptj.js"></script>{% endblock %} !-->
+{% block encabezado  %} Gestor de contraseñas {% endblock  %}</h2>
+
+{% block cuerpo %}
+
+</br>
+
+
+{%  if ERRORES %}
+                <div class="col-xs-12" id="errores">
+                        <p class="regis" style="background-color:rgba(217,83,79,0.5); width: 200px;">{{ ERRORES }}</div>
+                </div>
+{%  endif %}
+
+<div class="col-sm-2"></div>
+<div class="col-sm-9 main-section">
+  <div class="container modal-content">
+
+  <form class="form-group" id="valid" method="POST">
+
+    {% csrf_token %}
+
+
+
+    <div id="codigo" class="form-group">
+
+      <label> Escribe de nuevo tu usuario</label>
+      <input placeholder="username++" type="text" name="cobi" id="cobi" class="form-control"/>
+      <i class="fa fa-telegram" arian-hidden="true" ></i>
+
+
+      <label> Porfavor escribe abajo el MISMO  Chat_id con el cual te registraste</label>
+      <br/>
+      <input placeholder="chat_idd" type="text" name="chat_idd" id="chat_idd" class="form-control"/>
+      <i class="fa fa-telegram" arian-hidden="true" ></i>
+      <label class="glyphicon" style="color:red" id="errores1"></label>
+      <br/>
+      
+      <button class="fa fa-telegram " id="tok" name="tok" type="submit"> <span class="glyphicon glyphicon-log-in"></span> Enviarme Token </button>
+   </div>
+
+
+
+
+    
+
+    <div class="center">
+
+     
+    </div>
+  </form>
+
+  </div>
+</div>
+<div class="col-sm-2"></div>
+{%  endblock %}

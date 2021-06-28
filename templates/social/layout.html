@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <p  class='text-center' style="background:black;   color:white; font-weight:bold;">Proyecto de programación segura </p>
+<head>
+	<title>Django Social</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+</head>
+<body style="background-color:#D6EAF8">
+  <div class="text-center">
+    <header class="main-head">
+      
+		<nav class="jumbotron">
+		  <marquee > <h1>Llavero  de Contraseñas </h1></marquee>
+
+		  
+
+		
+		</nav>
+	</header>
+	</div>
+		<ul >
+                                {%if user.is_authenticated %}
+                                <li><a href="{% url 'logout' %}">Salir</a></li>
+                                
+				
+                                {% else %}
+                                
+                                <li><h1 class="nuevoPassword"><a href="{% url 'registro' %}">Registrarse</a> </h1></li>
+                                <li><h1> <a href="{% url 'login' %}">Loguearme</a></h1></li>
+                                {% endif %}
+				
+				
+			</ul>
+
+	{% if messages %}
+            {% for message in messages %}
+            <div class="notification {{ message.tags }}">
+                 {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+	
+	<div class="container">
+		
+		<nav class="second-nav navbar navbar-expand-lg navbar-light bg-light">
+			
+                        {% if request.user.is_authenticated %}
+                        <a class="profile navbar-brand" href="{%url 'perfil' %}">Mi Perfil</a>
+		
+                        <a class=" navbar-brand profile" href="{% url 'password' %}">Registrar nuevo Password</a>
+                        {% endif %}
+			
+		</nav>
+
+		<br/>
+		<div class="container">
+
+		{% block content %}
+
+		{% endblock content %}
+		</div>
+
+
+	</div>
+
+	<footer>
+		
+	</footer>
+
+</body>
+</html>

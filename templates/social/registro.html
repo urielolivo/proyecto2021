@@ -1,0 +1,30 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<form class="form" method="post">
+    {% csrf_token %}
+    
+   {{ form.non_field_errors }}
+
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field.errors }}
+    {{ hidden_field }}
+  {% endfor %}
+
+
+      {% for field in form.visible_fields %}<br>
+      <tr>
+        <th>{{ field.label_tag }}</th><br>
+        <td>
+          {{ field.errors }}
+          {{ field }}
+          {{ field.help_text }}
+        </td>
+      </tr>
+    {% endfor %}
+     <button type="submit" id="submit">Registrar</button>
+</form>
+
+
+{% endblock %}

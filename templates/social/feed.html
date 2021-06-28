@@ -1,0 +1,15 @@
+
+{% extends 'social/layout.html' %}
+{% load humanize %}
+{% block content %}
+
+{%if user.is_authenticated %}
+<h1>Bienvenido {{user.username }} </h1>
+<img src="../../static/feed.jpg" width= 773>
+
+{% else %}
+   <a href="{% url 'registro' %}"> ¿No eres parte de nosotros? !Registrate! </a>
+{% endif %}
+
+
+{% endblock %}

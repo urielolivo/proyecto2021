@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+{% extends 'social/layout.html' %}
+{% block content %}
+
+<!-- Profile -->
+<div class="profile">
+	<img src="{{ user.perfil.image.url }}">
+	<h2>{{ user.username}}</h2>
+
+</div>
+<div>
+	<h5 style="text-align:center">Password</h5>
+        <p style="text-align:center">{{ user.passwords.count }} </p>
+</div>
+{% for password in passwords %}
+
+
+<article>
+    <div class="container-article">
+        <!-- <img src="{{ password.user.perfil.image.url }}"> -->
+        <div>
+            <h4 class="username">{{ password.user.username}}</h4>
+            <p class="username"> Usuario: {{ password.usuario }}</p>
+            <p class="username">Nota: {{password.nota}}</p>
+            
+               <p class="username" id="password-field" type="password" class="form-control" name="password" value="secret">Password: {{password.contrasena}} </p>
+                
+            <a href="{% url 'perfil' password.user.username %}"></a>
+            <i class="clock"></i>
+            
+            <div class="post">{{ password.url }}</div>
+        </div>
+    </div>
+    <div class="card-footer">
+    	{% if user == password.user %}
+    	 <a href="{%url 'eliminarpassword' password.id %}" class="btn btn-danger">Eliminar</a>
+         <a href="{%url 'editarpassword' password.id %}" class="btn btn-warning">Editar</a>
+         <a href="{%url 'compartir' password.id %}" class="btn btn-secondary">Compartir</a>
+         {% endif %}
+    </div>
+
+   
+   
+</article>
+
+{% endfor %}
+<div>
+	<h5 style="text-align:center">Password</h5>
+        <p style="text-align:center">{{ compartidosn }} </p>
+</div>
+
+        <div>
+        	<h4>Passwords compartidas</h4>
+        </div>
+
+{% for compartir in compartidos %}
+
+
+<article>
+    <div class="container-article">
+        <!-- <img src="{{ password.user.perfil.image.url }}"> -->
+        
+        
+
+        <div>
+            
+            <p class="username"> Compatida por: {{ compartir.password.user }}</p>
+            <p class="username"> Sitio: {{ compartir.password.url }}</p>
+            <p class="username"> Usuario: {{ compartir.password.usuario }}</p>
+            <p class="username"> Passwor: {{ compartir.password.contrasena }}</p>
+            <p class="username"> nota: {{ compartir.password.nota }}</p>
+        </div>
+        
+    </div>
+
+   
+</article>
+
+{% endfor %}
+
+
+{{ block.super }}
+
+{% endblock %}

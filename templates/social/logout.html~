@@ -1,0 +1,6 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<h1> Gracias </h1>
+{% endblock %}
